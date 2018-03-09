@@ -1,3 +1,37 @@
 .App {
+  margin: auto;
   text-align: center;
+  width: 65%;
+}
+.App h1 {
+  font-size: 28px;
+  padding: 15px;
+  border-bottom: 1px solid rgb(213, 210, 213);
+  margin-bottom: 40px;
+}
+
+/* FILTER */
+.filter-container{
+  text-align: left;
+  margin: auto;
+  width: 85%;
+  padding: 10px;
+  display: block;
+}
+.filter-container h3 {
+  display: inline;
+  padding-right: 20px;
+}
+
+/* POST */
+.item-group {
+  margin: auto;
+  width: 85%;
+  padding: 10px;
+  text-align: justify;
+}
+.item-votes {
+  margin: 10px 50px ;
+  font-size: 18px;
+
 }

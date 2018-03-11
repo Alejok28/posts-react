@@ -22,6 +22,9 @@
   display: inline;
   padding-right: 20px;
 }
+.active {
+  background-color: red;
+}
 
 /* POST */
 .item-group {

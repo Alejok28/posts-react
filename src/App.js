@@ -14,7 +14,7 @@ class App extends Component {
   this.descendingOrder();
   }
 
-  descendingOrder() {
+  descendingOrder = () => {
     var items = this.state.posts;
     items.sort((a, b) => {
       if (a.votes < b.votes+1) {
@@ -31,7 +31,7 @@ class App extends Component {
     });
   }
 
-  ascendingOrder() {
+  ascendingOrder = () => {
     var items = this.state.posts;
     items.sort((a, b) => {
       if (a.votes > b.votes-1) {
@@ -48,7 +48,7 @@ class App extends Component {
     });
   }
 
-  voteUp(post) {
+  voteUp = (post) => {
     const isAscending = this.state.ascending;
     isAscending ? this.ascendingOrder() : this.descendingOrder();
     const { id, title, description, votes, url, writer_avatar_url, post_image_url } = post;
@@ -57,9 +57,9 @@ class App extends Component {
     this.setState({
       posts: updatedPosts
     });
-
   }
-  voteDown(post) {
+
+  voteDown = (post) => {
     const isAscending = this.state.ascending;
     isAscending ? this.ascendingOrder() : this.descendingOrder();
     const { id, title, description, votes, url, writer_avatar_url, post_image_url } = post;
@@ -70,17 +70,16 @@ class App extends Component {
     });
   }
 
-
   render() {
     return (
       <div className="App">
         <h1>Blog post populares</h1>
         <Filter
           order={this.state.ascending}
-          handleClickBtn1={this.ascendingOrder.bind(this)} handleClickBtn2={this.descendingOrder.bind(this)}
+          handleClickBtn1={this.ascendingOrder} handleClickBtn2={this.descendingOrder}
         />
         {this.state.posts.map((post)=>(
-          <Post post={post} onClickVoteUp={this.voteUp.bind(this,post)} onClickVoteDown={this.voteDown.bind(this,post)}/>
+          <Post key={post.id} post={post} onClickVoteUp={this.voteUp.bind(this,post)} onClickVoteDown={this.voteDown.bind(this,post)}/>
         ))}
 
       </div>

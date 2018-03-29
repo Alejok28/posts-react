@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Post from './components/Post';
 import Filter from './components/Filter';
-import {posts} from './posts';
+import { posts } from './posts';
 import './App.css';
 
 class App extends Component {
@@ -48,23 +48,23 @@ class App extends Component {
     });
   }
 
-  voteUp = (post) => {
+  voteUp = post => {
     const isAscending = this.state.ascending;
     isAscending ? this.ascendingOrder() : this.descendingOrder();
-    const { id, title, description, votes, url, writer_avatar_url, post_image_url } = post;
-    let updatedPosts = this.state.posts.map((p,i) => id === p.id ? {id, title, description, votes:(votes + 1), url, writer_avatar_url, post_image_url } : p)
-
+    const updatedPosts = this.state.posts.map((p) => {
+      return p.id === post.id ? Object.assign({}, p, { votes: p.votes + 1 }) : p
+    })
     this.setState({
       posts: updatedPosts
     });
   }
 
-  voteDown = (post) => {
+  voteDown = post => {
     const isAscending = this.state.ascending;
     isAscending ? this.ascendingOrder() : this.descendingOrder();
-    const { id, title, description, votes, url, writer_avatar_url, post_image_url } = post;
-    let updatedPosts = this.state.posts.map((p,i) => id === p.id ? {id, title, description, votes:(votes - 1), url, writer_avatar_url, post_image_url } : p)
-
+    const updatedPosts = this.state.posts.map((p) => {
+      return p.id === post.id ? Object.assign({}, p, { votes: p.votes - 1 }) : p
+    })
     this.setState({
       posts: updatedPosts
     });
@@ -76,12 +76,16 @@ class App extends Component {
         <h1>Blog post populares</h1>
         <Filter
           order={this.state.ascending}
-          handleClickBtn1={this.ascendingOrder} handleClickBtn2={this.descendingOrder}
+          handleClickBtn1={this.ascendingOrder}
+          handleClickBtn2={this.descendingOrder}
         />
-        {this.state.posts.map((post)=>(
-          <Post key={post.id} post={post} onClickVoteUp={this.voteUp.bind(this,post)} onClickVoteDown={this.voteDown.bind(this,post)}/>
+        {this.state.posts.map( post => (
+          <Post
+            key={post.id}
+            post={post}
+            onClickVoteUp={this.voteUp.bind(this, post)} onClickVoteDown={this.voteDown.bind(this, post)}
+          />
         ))}
-
       </div>
     );
   }

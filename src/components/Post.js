@@ -1,9 +1,7 @@
 import React from 'react';
 import { Image, Item, Icon, Divider } from 'semantic-ui-react'
-// import store from '../store';
 
-
-const Post = ({post, onClickVoteUp, onClickVoteDown }) => {
+const Post = ({ post, onClickVoteUp, onClickVoteDown }) => {
   return (
 		<div id={post.id} className='item-group'>
 			<Item.Group >
@@ -13,7 +11,7 @@ const Post = ({post, onClickVoteUp, onClickVoteDown }) => {
 						<Item.Content className='item-votes'>
 							<Icon  onClick={onClickVoteUp} link name='triangle up' />
 							{post.votes}
-							<Icon onClick={onClickVoteDown}link name='triangle down' />
+							<Icon onClick={onClickVoteDown} link name='triangle down' />
 						</Item.Content>
 					</Item>
 					<Item.Content>

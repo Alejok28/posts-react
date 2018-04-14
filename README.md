@@ -7,5 +7,6 @@ This repo has been created with [Create React App](https://github.com/facebookin
 the user interface is made with [Semantic-UI](https://github.com/Semantic-Org/Semantic-UI).
 
 To see the project:
-1. clone the repository
-2. run "npm install"
+1. clone the repository.
+2. run "npm install".
+3. run "npm start".
